@@ -1,4 +1,4 @@
-app.get('/classmate', (req, res) => {
+app.get('/Internal__Directory', (req, res) => {
   const classmateNumber = req.query.user;
   const classmate = classmates[classmateNumber];
 
