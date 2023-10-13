@@ -1,0 +1,77 @@
+app.get('/classmate', (req, res) => {
+  const classmateNumber = req.query.user;
+  const classmate = classmates[classmateNumber];
+
+  if (classmate) {
+    res.send(`
+      <html>
+        <head>
+          <style>
+          body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+          }
+          
+          h1 {
+            color: #333;
+          }
+          
+          p {
+            color: #666;
+            text-decoration: bold;
+          }
+            </style>
+        </head>
+        <body>
+          <div>
+            <h1>Classmate Information</h1>
+            <img src="${avatar[classmate.avatar].link}" alt="Cat">
+            <p>Name: ${classmate.name}</p>
+            <p>Surname: ${classmate.surname}</p>
+            <p>Age: ${classmate.age}</p>
+            <p>Phone: ${Phone[classmate.phone_number].number}</p>
+          </div>
+        </body>
+      </html>
+    `);
+  } else {
+    // Send a picture of a cat if the classmate is not found
+    res.send(`
+      <html>
+        <head>
+          <style>
+          body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+          }
+          
+          h1 {
+            color: #333;
+          }
+          
+          p {
+            color: #666;
+            text-decoration: bold;
+          }
+            </style>
+        </head>
+        <body>
+          <div>
+            <h1>Classmate Not Found</h1>
+            <img src="https://media.tenor.com/XGKsolGpZAsAAAAd/monkey-ape.gif" alt="Cat">
+          </div>
+        </body>
+      </html>
+    `);
+  }
+});
